@@ -2,6 +2,7 @@ package co.intro.promedioapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -55,12 +56,17 @@ public class NotaActivity extends AppCompatActivity {
                     ejCast = Double.parseDouble((ej.getText().toString()));
                     p1Cast = Double.parseDouble((p1.getText().toString()));
                     p2Cast = Double.parseDouble((p2.getText().toString()));
+
                     nota = (pP1Cast * 0.25) + (pP2Cast * 0.25) + (p1Cast * 0.15) + (p2Cast * 0.15) + (quizCast * 0.15) +
                             (ejCast * 0.05);
-                     Log.e("NOTA",""+ nota);
 
                     SharedPreferences colorPreference = getSharedPreferences("Locker", MODE_PRIVATE);
                     colorPreference.edit().putFloat("promedioNota",(float)nota).apply();
+
+                    Intent i = new Intent(this, ResultadoActivity.class);
+                    startActivity(i);
+                    finish();
+
                 }
         );
 
@@ -69,14 +75,13 @@ public class NotaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        super.onResume();
         SharedPreferences colorPreference = getSharedPreferences("Locker", MODE_PRIVATE);
         String color = colorPreference.getString("nuevoColor", "NO_COLOR");
 
         switch (color) {
 
-            case "azul":
-                getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+            case "cian":
+                getWindow().getDecorView().setBackgroundColor(Color.CYAN);
 
                 break;
             case "blanco":

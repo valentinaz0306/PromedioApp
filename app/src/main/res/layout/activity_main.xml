@@ -42,6 +42,7 @@
         android:ems="10"
         android:hint="  Nombre"
         android:inputType="textPersonName"
+        android:paddingStart="20dp"
         app:layout_constraintBottom_toTopOf="@+id/continuarBu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

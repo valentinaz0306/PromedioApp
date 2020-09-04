@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         configBu.setOnClickListener(
                 (v)->{
                 Intent i = new Intent(this,ColorActivity.class);
-               // i.putExtra("colorScreen1", (Parcelable) colorScreen1);
+
                     startActivityForResult(i,10);
                 }
 
@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         continuarBu.setOnClickListener(
                 (v)->{
+
+                    SharedPreferences preferences = getSharedPreferences("Locker", MODE_PRIVATE);
+                    preferences.edit().putString("username", textBu.getText().toString()).apply();
                     Intent i = new Intent(this,NotaActivity.class);
                     startActivity(i);
                 }
@@ -48,16 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
     }//oncreate
 
+
     @Override
     protected void onResume() {
-        super.onResume();
         super.onResume();
         SharedPreferences colorPreference = getSharedPreferences("Locker", MODE_PRIVATE);
         String color=colorPreference.getString("nuevoColor", "NO_COLOR");
 
         switch (color){
 
-            case "azul":   getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+            case "cian":   getWindow().getDecorView().setBackgroundColor(Color.CYAN);
 
                 break;
             case "blanco":   getWindow().getDecorView().setBackgroundColor(Color.WHITE);

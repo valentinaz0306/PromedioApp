@@ -31,7 +31,7 @@
         android:textColor="#090909"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/OtravBu"
+        app:layout_constraintBottom_toTopOf="@+id/otraBu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/OtravBu"
+        android:id="@+id/otraBu"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="120dp"

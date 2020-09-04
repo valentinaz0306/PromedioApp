@@ -26,11 +26,16 @@ public class ResultadoActivity extends AppCompatActivity {
         textResult=findViewById(R.id.textResult);
         text2=findViewById(R.id. text2);
         textNota=findViewById(R.id. textNota);
-        //otravBu=findViewById(R.id. otravBu);
+        otravBu=findViewById(R.id.otraBu);
 
         otravBu.setOnClickListener(
+
                 (v)->{
 
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+
+                    finish();
 
                 }
 
@@ -42,14 +47,14 @@ public class ResultadoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        super.onResume();
+
         SharedPreferences colorPreference = getSharedPreferences("Locker", MODE_PRIVATE);
         String color = colorPreference.getString("nuevoColor", "NO_COLOR");
 
         switch (color) {
 
-            case "azul":
-                getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+            case "cian":
+                getWindow().getDecorView().setBackgroundColor(Color.CYAN);
 
                 break;
             case "blanco":
@@ -62,6 +67,11 @@ public class ResultadoActivity extends AppCompatActivity {
                 break;
 
         }
+
+        String mensaje = "Hola, " + colorPreference.getString("username", "NoUsernaame") + " tu nota fue de:";
+        text2.setText(mensaje);
+        textNota.setText(""+ colorPreference.getFloat("promedioNota", 0));
+
     }
 
 

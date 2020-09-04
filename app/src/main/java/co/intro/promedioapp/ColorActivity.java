@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ColorActivity extends AppCompatActivity  implements View.OnClickLis
 
         switch (v.getId()){
             case R.id.azulBu:
-                colorPreference.edit().putString("nuevoColor","azul").apply();
+                colorPreference.edit().putString("nuevoColor","cian").apply();
                 //i.putExtra("color","azul");
                 break;
             case R.id.blancoBu:
@@ -61,9 +62,30 @@ public class ColorActivity extends AppCompatActivity  implements View.OnClickLis
         finish();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences colorPreference = getSharedPreferences("Locker", MODE_PRIVATE);
+        String color=colorPreference.getString("nuevoColor", "NO_COLOR");
 
+        switch (color){
 
+            case "cian":   getWindow().getDecorView().setBackgroundColor(Color.CYAN);
+
+                break;
+            case "blanco":   getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+
+                break;
+            case "verde":   getWindow().getDecorView().setBackgroundColor(Color.GREEN);
+
+                break;
+
+        }
     }
+
+
+
+}
 
 
 
